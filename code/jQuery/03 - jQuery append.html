@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+	<div id="container" style="display:none">
+	</div>
+
+	<script type="text/javascript" src="../lib/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript">
+
+		$(function() {
+
+			var arr = getArray(),
+				scenarios = [
+					"Simple append",
+					"Inserting once using string",
+					"Inserting once using string and wrapping element"
+				];
+			
+			// Append to the dom in every loop iteration
+			console.profile(scenarios[0]);
+			console.time(scenarios[0]);
+			var container = $('#container');
+			$.each(arr, function() {
+				container.append("<div>" + this + "</div>");
+			});
+			console.timeEnd(scenarios[0]);
+			console.profileEnd(scenarios[0]);
+
+			// String concat and then append all elements to the dom
+			console.profile(scenarios[1]);
+			console.time(scenarios[1]);
+			var appendString = "";
+			$.each(arr, function() {
+				appendString += "<div>" + this + "</div>";
+			});
+			$('#container').append(appendString);
+			console.timeEnd(scenarios[1]);
+			console.profileEnd(scenarios[1]);
+
+			// String concat and then append all elements to the dom with a wrapping element
+			console.profile(scenarios[2]);
+			console.time(scenarios[2]);
+			var appendString = "";
+			$.each(arr, function() {
+				appendString += "<div>" + this + "</div>";
+			});
+			$('#container').append('<div>' + appendString + '</div>');	
+			console.timeEnd(scenarios[2]);
+			console.profileEnd(scenarios[2]);
+		});
+		
+		function getArray () {
+			
+			var arrLen = 10000,
+				arr = [arrLen];
+			
+			for(var i=0; i<arrLen; i++) {
+				arr[i] = i;
+			};
+
+			return arr;
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+	<div id="container" >
+		<span>Javascript 101</span>
+	</div>
+
+	<script type="text/javascript" src="../lib/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript">
+			
+		$(function() {
+
+			var descriptionJquery  = "jQuery id",
+			    descriptionNative  = "Native id";			
+			
+			console.time(descriptionJquery);
+			var myDiv = $("div");
+			for(var i=0; i<10000; i++) {
+				var s = myDiv.attr("id");
+			}
+			console.timeEnd(descriptionJquery);
+
+			console.time(descriptionNative);
+			var myDiv = $("div");
+			for(var i=0; i<10000; i++) {
+				var s = myDiv[0].id;
+			}
+			console.timeEnd(descriptionNative);
+			
+		});
+		
+	</script>
+</body>
+</html>

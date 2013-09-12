@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+	<div id="container">
+	</div>
+	
+	<script type="text/javascript" src="../lib/jquery-2.0.3.min.js"></script>
+
+	<script type="text/javascript">
+		
+		$(function() {
+			
+			createDivs();			
+			
+			var descriptionOn  = "Caching length attribute ON ",
+			    descriptionOff = "Caching length attribute OFF";
+
+
+			console.time(descriptionOff);	
+			var divs = $("div");
+			for(var j=0; j<divs.length; j++) {
+				sum += j;
+			}
+			console.timeEnd(descriptionOff);
+			
+			
+			console.time(descriptionOn);
+			var sum = 0;
+			var divs = $("div");
+			var len = divs.length;
+			for(var j=0; j<len; j++) {
+				
+				sum += j;
+			}
+			console.timeEnd(descriptionOn);
+			
+		});
+
+		function createDivs() {
+
+			var elementsLength = 10000,
+				elements = [elementsLength];
+
+			for(var i=0; i<elementsLength; i++) {
+				elements[i] = i;
+			}
+			
+			var str = "";
+			$.each(elements, function() {
+				str += "<div>" + this + "</div>";
+			});
+
+			$('#container').append('<div>' + str + '</div>');
+		}		
+		
+	</script>
+
+</body>
+</html>
