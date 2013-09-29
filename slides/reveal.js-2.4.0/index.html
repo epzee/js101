@@ -17,6 +17,9 @@
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
+		
+		<link href="./favicon.ico" rel="icon" type="image/ico" />
+
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -28,6 +31,14 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<style type="text/css">
+			.reveal pre code {
+				max-height: 500px;
+			}
+		</style>
+
+
 	</head>
 
 	<body>
@@ -273,46 +284,123 @@ result = outside()(20); // returns 20 instead of 10
 				</section>
 
 				<section>
-					<section>
-						<h3>Hoisting</h3>
-						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var foo = function () {
-	bar();
-	mar();
 
-	var bar = function () {
-		console.log("bar");
+					<section>
+						<h3>Hoisting - Variables</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var name = "Baggins";
+
+(function () {
+
+
+    console.log("Original name was " + name);
+
+    var name = "Underhill";
+
+    console.log("New name is " + name);
+
+
+})();
+
+console.log("name is " + name);
+						</code></pre>
+					</section>			
+					<section>
+						<h3>Hoisting - Variables</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var name = "Baggins";
+
+(function () {
+
+
+    console.log("Original name was " + name); //"Original name was undefined"
+
+    var name = "Underhill";
+
+    console.log("New name is " + name);  // "New name is Underhill"
+
+
+})();
+
+console.log("name is " + name);  // "name is Baggins"
+						</code></pre>
+					</section>
+					<section>
+						<h3>Hoisting - Variables</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var name = "Baggins";
+
+(function () {
+    var name;
+
+    console.log("Original name was " + name); //"Original name was undefined"
+
+    name = "Underhill";
+
+    console.log("New name is " + name);  // "New name is Underhill"
+
+
+})();
+
+console.log("name is " + name); // "New name is Underhill"
+						</code></pre>
+					</section>						
+					<section>
+						<h3>Hoisting - Functions</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+(function() {
+
+	functionExpression();
+	functionDeclaration();
+	funcName();
+
+	var functionExpression = function() {
+		console.log("functionExpression");
 	};
 
-	bar();
+	var namedFunctionExpression = function funcName() {
+		console.log("namedFunctionExpression");
+	};	
 
-	function mar () {
-		console.log("mar");
+	function functionDeclaration() {
+		console.log("functionDeclaration");
 	}
-}();
-						</code></pre>
 
+	functionExpression();
+	namedFunctionExpression();
+	funcName();
+
+})();
+						</code></pre>
 					</section>
 
 					<section>
-						<h3>Hoisting</h3>
+						<h3>Hoisting - Functions</h3>
 						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var foo = function() {
-	bar(); //undefined
-	mar(); //mar
+(function() {
 
-	var bar = function(){
-		console.log("bar");
+	functionExpression();  // TypeError: undefined is not a function
+	functionDeclaration(); // "functionDeclaration"
+	funcName();            // ReferenceError: funcName is not defined
+
+	var functionExpression = function() {
+		console.log("functionExpression");
 	};
 
-	bar(); //bar
+	var namedFunctionExpression = function funcName() {
+		console.log("namedFunctionExpression");
+	};	
 
-	function mar(){
-		console.log("mar");
+	function functionDeclaration() {
+		console.log("functionDeclaration");
 	}
-}();
-						</code></pre>
 
+	functionExpression();      // "functionExpression"
+	namedFunctionExpression(); // "namedFunctionExpression"
+	funcName();                // ReferenceError: funcName is not defined
+
+})();
+						</code></pre>
 					</section>
 				</section>
 
@@ -379,6 +467,9 @@ console.log(IdGenerator.getId()); // 2
 				</section>
 
 				<section>
+					<section>
+						<h3>jQuery - use cdn</h3>
+					</section>					
 					<section>
 						<h3>jQuery - append</h3>
 					</section>
