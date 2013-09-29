@@ -104,31 +104,183 @@
 				<section>
 					<section>
 						<h3>Objects</h3>
+						<p>An object is a container of properties, where a property has a name and a value.</p>
 					</section>
 
 					<section>
-						<h3>Object literal</h3>
+						<h3>Objects</h3>
+						<p>A property name can be any string, including the empty string.</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var foo = {
+	"" : "bar",
+	"bar" : ""
+}
+						</code></pre>
 					</section>
 
 					<section>
-						<h3>Using new/function</h3>
+						<h3>Objects</h3>
+						<p>A property value can be any JavaScript value except for <i>undefined</i>.</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var employee = {
+	"name": "Pepe",
+	"age": 35,
+	"": {
+		street: "Av. 1",
+		"number": 1000
+	},
+	"phone": null,
+}
+						</code></pre>
 					</section>
 
 					<section>
-						<h3>Using object.create</h3>
+						<h3>Creation - Object literal</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var employee = {
+	"name": "Pepe",
+	"age": 35,
+	"": {
+		street: "Av. 1",
+		"number": 1000
+	},
+	"phone": null,
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Creation - Using constructor function</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function Employee(name, age, address, phone){
+	//some behavior...
+	this.name = name;
+	this.age = age;
+	this.address = address;
+	this.phone = phone;
+}
+
+var firstEmployee = new Employee("Pepe", 35, 
+	{"street": "Av.1", "number": 1000}, null);
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Creation - Using Object.create</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var myMammal = {
+	name : 'Herb the Mammal',
+	get_name : function ( ) {
+		return this.name;
+	},
+	says : function ( ) {
+		return this.saying || '';
+	}
+};
+
+var myCat = Object.create(myMammal);
+
+myCat.name = 'Henrietta';
+myCat.saying = 'meow';
+myCat.get_name = function ( ) {
+	return this.says() + ' ' + this.name + ' ' + this.says();
+};
+
+myCat.get_name(); //"meow Henrietta meow"
+
+						</code></pre>
 					</section>
 
 					<section>
 						<h3>Properties</h3>
+						<p>In JavaScript, objects are also associative arrays.</p>
 						<!-- object[] -->
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var employee = {
+	"name": "Pepe",
+	"age": 35,
+	"": {
+		street: "Av. 1",
+		"number": 1000
+	},
+	"phone": null,
+};
+employee["name"] = "Juan";
+console.log(employee["name"]); // "Juan"
+console.log(employee[""]); // Object {street: "Av. 1", number: 1000}
+						</code></pre>
 					</section>
 
 					<section>
 						<h3>Properties</h3>
+						<p>. notation <i>(if it is a legal JavaScript name and not a reserved word)</i></p>
 						<!-- object.property -->
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var employee = {
+	"name": "Pepe",
+	"age": 35,
+	"": {
+		street: "Av. 1",
+		"number": 1000
+	},
+	"phone": null,
+};
+employee.name = "Juan";
+console.log(employee.name); // "Juan"
+//employee[""] ??
+						</code></pre>
 					</section>
+
 					<section>
-						<h3>var foo = args || "bar";</h3>
+						<h3>Default property value</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function Employee(name, age, address, phone){
+	//some behavior...
+	this.name = name || "noName";
+	this.age = age;
+	this.address = address;
+	this.phone = phone;
+};
+
+var firstEmployee = new Employee(null, 35, 
+	{"street": "Av.1", "number": 1000}, null);
+console.log(firstEmployee.name); // "noName"
+						</code></pre>
+
+					</section>
+
+					<section>
+						<h3>Default property value</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function Employee(name, age, address, phone){
+	//some behavior...
+	this.name = name || "noName";
+	this.age = age;
+	this.address = address;
+	this.phone = phone;
+};
+
+var firstEmployee = new Employee("", 35, 
+	{"street": "Av.1", "number": 1000}, null);
+console.log(secondEmployee.name); // ??
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Default property value</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function Employee(name, age, address, phone){
+	//some behavior...
+	this.name = name || "noName";
+	this.age = age;
+	this.address = address;
+	this.phone = phone;
+};
+
+var firstEmployee = new Employee("", 35, 
+	{"street": "Av.1", "number": 1000}, null);
+console.log(secondEmployee.name); // "noName"
+						</code></pre>
 					</section>
 				</section>
 
