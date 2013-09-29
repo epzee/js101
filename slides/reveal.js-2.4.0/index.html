@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>JavaScript 101</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -38,7 +38,7 @@
 			<div class="slides">
 
 				<section>
-					<h1>javascript 101</h1>
+					<h1>JavaScript 101</h1>
 					<p>
 						<small><a href="https://glo.globallogic.com/users/profile/Augusto.Mazza">Augusto Mazza</a> / <a href="https://glo.globallogic.com/users/profile/Pedro.Tamone">Pedro Tamone</a></small>
 					</p>
@@ -96,6 +96,9 @@
 						<h3>Properties</h3>
 						<!-- object.property -->
 					</section>
+					<section>
+						<h3>var foo = args || "bar";</h3>
+					</section>
 				</section>
 
 				<!-- Functions -->
@@ -123,6 +126,7 @@
 
 					<section>
 						<h3>Anonymous functions</h3>
+						<!-- callbackhell -->
 					</section>
 
 					<section>
@@ -333,16 +337,132 @@ console.log(IdGenerator.getId()); // 2
 				</section>
 
 				<section>
-					<h3>Best practices</h3>
-					<ul>
-						<li>Falsy values</li>
-						<li>Comparison Operators</li>
-						<li>jQuery</li>
-						<li>_</li>
-						<li>Chrome devtools</li>
-						<li>...</li>
-					</ul>
+					<h2>Best practices</h2>
 				</section>
+
+				<section>
+					<section>
+						<h3>Falsy Values - list</h3>
+					</section>
+					<section>
+						<h3>Falsy Values - !! !!!</h3>
+					</section>					
+				</section>
+
+				<section>
+					<section>
+						<h3>Comparison Objects - diff == and ===, type coalescing</h3>
+					</section>
+					<section>
+						<h3>Comparison Objects - example</h3>
+					</section>					
+				</section>
+
+				<section>
+					<section>
+						<h3>jQuery - append</h3>
+					</section>
+					<section>
+						<h3>jQuery - selector caching</h3>
+					</section>
+					<section>
+						<h3>jQuery - selector chaining</h3>
+					</section>
+					<section>
+						<h3>jQuery - Sizzle</h3>
+					</section>
+					<section>
+						<h3>jQuery - no conflict</h3>
+					</section>	
+				</section>
+
+				<section>
+					<section>
+						<h3>Underscore.js - debounce high rate events</h3>
+					</section>
+					<section>
+						<h3>Underscore.js - array filter</h3>
+					</section>
+					<section>
+						<h3>Underscore.js - extend</h3>
+					</section>
+					<section>
+						<h3>Underscore.js - default</h3>
+					</section>				
+				</section>
+
+				<section>
+					<section>
+						<h3>devtools - shortcuts</h3>
+					</section>
+					<section>
+						<h3>devtools - debugger / console.log</h3>
+					</section>	
+					<section>
+						<h3>devtools - network tab</h3>
+					</section>
+					<section>
+						<h3>devtools - profile</h3>
+					</section>
+					<section>
+						<h3>devtools - timing functions</h3>
+					</section>					
+				</section>
+
+				<section>
+					<section>
+						<h3>jslint</h3>
+					</section>
+					<section>
+						<h3>jslint - grunt</h3>
+					</section>					
+				</section>
+
+				<section>
+					<h3>Non Blocking Script Loading Pattern</h3>
+				</section>
+
+				<section>
+					<h3>Bundle & minification</h3>
+				</section>
+
+				<section>
+					<h3>Non Blocking Script Loading Pattern</h3>
+				</section>
+
+				<section>
+					<section>
+						<h3>Repaint & reflow</h3>
+					</section>
+					<section>
+						<h3>Repaint & reflow</h3>
+					</section>					
+				</section>
+
+				<section>
+					<h3>for in</h3>
+				</section>
+
+				<section>
+					<h3>Multiple var declaration (lint hint)</h3>
+				</section>
+
+				<section>
+					<h3>gzip</h3>
+				</section>
+
+				<section>
+					<h3>Didn't have time to</h3>
+				</section>
+
+				<section>
+					<h3>Links</h3>
+				</section>
+
+				<section>
+					<h3>Gracias!</h3>
+				</section>
+
 			</div>
 
 		</div>
@@ -360,7 +480,7 @@ console.log(IdGenerator.getId()); // 2
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: 'night', // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Optional libraries used to extend on reveal.js
