@@ -611,10 +611,22 @@ console.log(IdGenerator.getId()); // 2
 
 				<section>
 					<section>
-						<h3>Comparison Objects - diff == and ===, type coalescing</h3>
+						<h3>==</h3>
+						<p>If you try comparing a string with a number, the browser will try to convert the string into a number before doing the comparison:</p>
+					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+console.log(2013 == "2013") // true
+console.log(0    == false)  // true
+console.log(99   != "99");  // false
+					</code></pre>
 					</section>
 					<section>
-						<h3>Comparison Objects - example</h3>
+						<h3>===</h3>
+						<p>When using the triple equals, the values must be equal in type as well. <b>Equality without type coersion!</b></p>
+					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+console.log(2013 === "2013") // false
+console.log(0    === false)  // false
+console.log(99   !== "99");  // true
+					</code></pre>						
 					</section>					
 				</section>
 
