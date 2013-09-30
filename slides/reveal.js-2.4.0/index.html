@@ -971,11 +971,55 @@ console.log(IdGenerator.getId()); // 2
 				</section>
 
 				<section>
+					
 					<section>
-						<h3>Falsy Values - list</h3>
+						<h3>Falsy Values</h3>
+						<p>Everything in JavaScript has an inherent Boolean value, generally known as either truthy or falsy</p>
 					</section>
+
+					<section>
+						<h3>Falsy Values</h3>
+						<ul>
+							<li>false</li>
+							<li>0 (zero)</li>
+							<li>"" (empty string)</li>
+							<li>null</li>
+							<li>undefined</li>
+							<li>NaN (a special Number value meaning Not-a-Number!)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Falsy Values</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var foo = "";
+if (!foo) {
+	console.log("foo is not an empty string");
+} else {
+	console.log("foo is an empty string");
+}
+						</code></pre>
+					</section>
+
 					<section>
 						<h3>Falsy Values - !! !!!</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+hasShape: function () {
+	var instance = this,
+	result,
+	attributeId,
+	productAttribute,
+	textRelationAttributesConfig = FCConfigurationUtils.getConfigurationOrDefault(this.attributeConfig, "textRelations.attributes", []);
+	//find first element that has a shape
+	result = _.find(textRelationAttributesConfig, function (textRelationAttribute) {
+		attributeId = FCProductAttribute.convertToProductAttributeId(textRelationAttribute);
+		productAttribute = instance.product.getProductAttribute(attributeId);
+		return productAttribute.hasShape();
+	});
+
+	return !!result;
+},						
+						</code></pre>
 					</section>					
 				</section>
 
