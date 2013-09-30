@@ -30,7 +30,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_th
 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions_and_function_scope
 http://designpepper.com/blog/drips/variable-and-function-hoisting
 http://www.impressivewebs.com/why-use-triple-equals-javascipt/
-
+http://flippinawesome.org/2013/08/26/understanding-scope-and-context-in-javascript/
 
 == Bloque conceptos fundamentales
 

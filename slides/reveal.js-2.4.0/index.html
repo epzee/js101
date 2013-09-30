@@ -556,23 +556,31 @@ console.log("name is " + name); // "New name is Underhill"
 					</section>
 				</section>
 
+
 				<section>
 					<section>
+						<h3>Closure</h3>
+					</section>
+
+
+				<section>
 					<h3>Closure</h3>
 					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var IdGenerator = {
-	
-	number : 0,
+function foo(){
+    var local = 'private variable';
+    return function bar(){
+        return local;
+    }
+}
 
-	getId : function(){
-		this.number += 1;
-		return this.number;
-	}
-};
-console.log(IdGenerator.getId()); // 1
-console.log(IdGenerator.number); // 1
-console.log(IdGenerator.getId()); // 2
+var getLocalVariable = foo();
+getLocalVariable() // private variable
 					</code></pre>
+				</section>
+
+				<section>
+					<h3>Closure</h3>
+					<p>A closure is formed when a nested function is made accessible outside of the function in which it was defined, so that it may be executed after the outer function has returned.</p>
 				</section>
 
 				<section>
@@ -589,11 +597,33 @@ var IdGenerator = function () {
 		}
 	}
 }();
+
 console.log(IdGenerator.getId()); // 1
-console.log(IdGenerator.number); // undefined
 console.log(IdGenerator.getId()); // 2
+console.log(IdGenerator.getId()); // 3
+
+console.log(IdGenerator.number); // undefined
 					</code></pre>
 				</section>
+
+<!-- 					<section>
+					<h3>Closure</h3>
+					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var IdGenerator = {
+	
+	number : 0,
+
+	getId : function(){
+		this.number += 1;
+		return this.number;
+	}
+};
+console.log(IdGenerator.getId()); // 1
+console.log(IdGenerator.number); // 1
+console.log(IdGenerator.getId()); // 2
+					</code></pre>
+				</section> -->
+
 				</section>
 
 				<section>
