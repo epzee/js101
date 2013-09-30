@@ -675,12 +675,38 @@ console.log(p.m()); // 13
 					
 					<section>
 						<h3>Pseudoclassical</h3>
-						<!-- ejemplo Crockford o similar -->
+							<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var Mammal = function (name) {
+  this.name = name;
+};
+
+Mammal.prototype.get_name = function ( ) {
+  return this.name;
+};
+
+var myMammal = new Mammal('Herb the Mammal');
+var name = myMammal.get_name( ); // 'Herb the Mammal'
+
+
+var Cat = function (name) {
+  this.name = name;
+};
+
+// Replace Cat.prototype with a new instance of Mammal
+Cat.prototype = new Mammal( );
+
+Cat.prototype.get_name = function ( ) {
+  return this.name + ' is a Cat!';
+};
+
+var myCat = new Cat('Henrietta');
+myCat.get_name(); // Henrietta is a Cat!
+						</code></pre>							
 					</section>
 
-					<section>
+<!-- 					<section>
 						<h3>Third party libraries</h3>
-					</section>
+					</section> -->
 
 				</section>
 
@@ -1059,6 +1085,10 @@ console.log(99   !== "99");  // true
 
 					<section>
 						<h3>jQuery - use cdn</h3>
+						<p>CDNs can offer a performance benefit by hosting jQuery on servers spread across the globe. This also offers an advantage that if the visitor to your webpage has already downloaded a copy of jQuery from the same CDN, it won't have to be re-downloaded.</p>
+					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+					</code></pre>								
 					</section>
 
 					<section>
@@ -1116,11 +1146,17 @@ $(function() {
 					</section>
 
 					<section>
-						<h3>jQuery - selector chaining</h3>
+						<h3>jQuery - Chaining</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+$('#myElement').text('Change Text!').css('color','red');
+						</code></pre>						
 					</section>
 
 					<section>
 						<h3>jQuery - Sizzle</h3>
+						<a href="file:///C:/Users/amazza/Documents/GitHub/js101/code/jQuery/04%20-%20Sizzle%20selector%20performance.html">Demo</a>
+						<br/>
+						<a href="file:///C:/Users/amazza/Documents/GitHub/js101/code/jQuery/05%20-%20Sizzle%20selector%20performance%20using%20parent%20id.html">Demo (knowing container element)</a>						
 					</section>
 
 					<section>
@@ -1164,21 +1200,6 @@ $("content").style.display = "none";
 						</code></pre>
 					</section>	
 				</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Underscore.js - debounce high rate events</h3>
-					</section>
-					<section>
-						<h3>Underscore.js - array filter</h3>
-					</section>
-					<section>
-						<h3>Underscore.js - extend</h3>
-					</section>
-					<section>
-						<h3>Underscore.js - default</h3>
-					</section>				
 				</section>
 
 				<section>
@@ -1261,16 +1282,50 @@ document.body.appendChild(document.createTextNode('dude!'));
 					</section>					
 				</section>
 
-				<section>
+<!-- 				<section>
 					<h3>Didn't have time to</h3>
+				</section> -->
+
+				<section>
+					<h3>Underscore.js</h3>
 				</section>
+
+<!-- 				<section>
+					<section>
+						<h3>Underscore.js - debounce high rate events</h3>
+					</section>
+					<section>
+						<h3>Underscore.js - array filter</h3>
+					</section>
+					<section>
+						<h3>Underscore.js - extend</h3>
+					</section>
+					<section>
+						<h3>Underscore.js - default</h3>
+					</section>				
+				</section> -->
 
 				<section>
 					<h3>Links</h3>
+					<ul>
+						<li><a href="https://plus.google.com/u/0/communities/110426472881651574742">Comunidad Front-End GL</a></li>
+						<li><a href="http://javascriptweekly.com/">JavaScript weekly</a></li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript Mozilla Developer Network</a></li>
+						<li><a href="https://developers.google.com/chrome-developer-tools/">Chrome DevTools</a></li>
+						<li><a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">Javascript: The Good Parts</a></li>
+						<li><a href="https://twitter.com/BrendanEich">Brendan Eich</a></li>
+						<li><a href="https://twitter.com/addyosmani">Addy Osmani</a></li>
+						<li><a href="https://twitter.com/paul_irish">Paul Irish</a></li>
+						<li><a href="https://twitter.com/rem">Remy Sharp</a></li>
+
+						
+					</ul>			
 				</section>
 
 				<section>
-					<h3>Gracias!</h3>
+					<h1>Gracias!!!</h1>
+					<h3>Preguntas?</h3>
+					<a href="https://github.com/epzee/js101">github.com/epzee/js101</a>
 				</section>
 
 			</div>
