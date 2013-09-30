@@ -291,56 +291,213 @@ console.log(secondEmployee.name); // "noName"
 				<section>
 					<section>
 						<h3>Functions</h3>
+						<p>Functions in JavaScript are objects.</p>
+						<p>Since functions are objects, they can be used like any other value. Functions can be stored in variables, objects, and arrays. Functions can be passed as arguments to functions, and functions can be returned from functions. Also, since functions are objects, functions can have methods.</p>
 					</section>
 
 					<section>
 						<h3>Arguments</h3>
-						<!-- object are passed by reference -->
+						<p>Objects are passed by reference</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var changeObject = function (foo){
+	if (foo.bar) {
+		foo.bar = "newValue";
+	}
+};
+
+var foo = { bar: "firstValue"};
+console.log(foo.bar); // "firstValue"
+changeObject(foo);
+console.log(foo.bar); // "newValue"
+					</code></pre>
+					</section>
+
+					<section>
+						<h3>Arguments</h3>
+						<p>Simple types</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var changeObject = function (bar){
+	if (bar) {
+		bar = "newValue";
+	}
+};
+
+var foo = { bar: "firstValue"};
+console.log(foo.bar); // "firstValue"
+changeObject(foo.bar);
+console.log(foo.bar); // "firstValue"
+					</code></pre>
 					</section>
 
 					<section>
 						<h3>Function declaration</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+//...
+
+function functionDeclaration() {
+	console.log("functionDeclaration");
+}
+
+//...
+						</code></pre>
 					</section>
 
 					<section>
 						<h3>Function expression</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+//...
+
+var functionExpression = function() {
+	console.log("functionExpression");
+};
+
+//...
+						</code></pre>
 					</section>
 
 					<section>
 						<h3>First class citizens (callbacks)</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+$("p").on("click", function() {
+	alert($(this).text());
+});
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>First class citizens (callbacks)</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var showAlert = function() {
+	alert($(this).text());
+};
+
+$("p").on("click", showAlert);
+						</code></pre>
 					</section>
 
 					<section>
 						<h3>Anonymous functions</h3>
-						<!-- callbackhell -->
+						<p>Use the function operator instead of the function declaration.</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var form = document.querySelector('form');
+form.onsubmit = function(submitEvent) {
+  var name = document.querySelector('input').value;
+  request({
+    uri: "http://example.com/upload",
+    body: name,
+    method: "POST"
+  }, function(err, response, body) {
+    var statusMessage = document.querySelector('.status');
+    if (err) return statusMessage.value = err;
+    statusMessage.value = body;
+  });
+}
+						</code></pre>
 					</section>
 
 					<section>
-						<h3>Immediately Invoked Function Expression(IIFE)</h3>
+						<h3>Immediately Invoked Function Expression (IIFE)</h3>
+						<p></p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var counter = (function(){
+  var i = 0;
+ 
+  return {
+    get: function(){
+      return i;
+    },
+    set: function( val ){
+      i = val;
+    },
+    increment: function() {
+      return ++i;
+    }
+  };
+}());
+						</code></pre>
 					</section>
 
 					<section>
 						<!-- args not required -->
 						<h3>Function overloading</h3>
+						<p>JavaScript does not support function overloading</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function foo() {
+	console.log("foo function");
+}
+
+function foo(bar) {
+	console.log(bar);
+}
+						</code></pre>
 					</section>
 
 					<section>
 						<!-- args untyped (like all js variables) -->
 						<h3>Function overloading</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function logger(foo, bar) {
+	console.log(foo);
+	console.log(bar);
+}
+
+var foo = { "one": 1, "two": "two"},
+bar = "aString",
+other = function (){};
+
+logger(foo, bar);
+logger(bar, foo);
+logger(other, foo);
+						</code></pre>
 					</section>
 
 					<section>
 						<!-- "magic args" function foo(p1,p2,p3) {...} :: foo(1); foo(1,2); foo(1,2,3); foo(1,2,3,4) -->
 						<h3>Function overloading</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function logger(foo, bar) {
+	console.log(foo);
+	console.log(bar);
+}
+
+var foo = { "one": 1, "two": "two"},
+bar = "anString",
+other = function (){};
+
+logger();
+logger(foo, bar);
+logger(foo, bar, other);
+logger(foo, bar, other, 1);						
+logger(foo, bar, other, 1, "aString");						
+						</code></pre>
 					</section>
 
 					<section>
 						<!-- opts/config obj literal as last parameter -->
 						<h3>Function overloading</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function logger(foo, bar) {
+	console.log(foo);
+	console.log(bar);
+}
+
+var foo = { "one": 1, "two": "two"},
+bar = "anString",
+other = function (){};
+
+var opts = {foo : {"one": 1, "two": "two"},
+			bar : "anString",
+			other : function (){}
+};
+
+logger(opts);
+						</code></pre>
 					</section>
 
 					<section>
 						<h3>Function default return value</h3>
+						<p>A function always returns a value. If the return value is not specified, then undefined is returned.</p>
+						<p>If the function was invoked with the new prefix and the return value is not an object, then this (the new object) is returned instead.</p>
 					</section>
 
 				</section>
