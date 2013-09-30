@@ -56,11 +56,19 @@
 				</section>
 
 				<section>
-					<h2>Goals</h2>
+					<h2>Agenda</h2>
 					<ul>
-						<li>History</li>
-						<li>Concepts</li>
-						<li>Best practices</li>
+						<li class="fragment">History</li>
+						<li class="fragment">Concepts</li>
+						<ul>
+							<li class="fragment">Objects</li>
+							<li class="fragment">Functions</li>
+							<li class="fragment">Inheritance</li>
+							<li class="fragment">Scope</li>
+							<li class="fragment">Hoisting</li>
+							<li class="fragment">Closure</li>
+						</ul>
+						<li class="fragment">Best practices!</li>
 					</ul>
 				</section>
 
@@ -70,7 +78,7 @@
 					</section>				
 					<section>
 						<h3>History</h3>
-						<p>JavaScript was created in 10 days in May 1995 by Brendan Eich while working at Netscape</p>
+						<p>JavaScript was created in 10 days in May 1995 by <b>Brendan Eich</b> while working at Netscape</p>
 						<img src="../assets/this.big.Brendan.Eich.jpg" class="fragment">
 					</section>
 					<section>
@@ -93,14 +101,6 @@
 
 				<section>
 					<h3>Concepts</h3>
-					<ul>
-						<li>Objects</li>
-						<li>Functions</li>
-						<li>Inheritance</li>
-						<li>Scope</li>
-						<li>Hoisting</li>
-						<li>Closure</li>
-					</ul>
 				</section>
 
 				<!-- Objects -->
@@ -597,25 +597,49 @@ getLocalVariable() // private variable
 				<section>
 					<h3>Closure</h3>
 					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var IdGenerator = function () {
+var idGenerator = function() {
 	
-	var number = 0;
+	var nextId = 0;
 
 	return {
 		getId : function(){
-			number += 1;
-			return number;
+			nextId += 1;
+			return nextId;
 		}
 	}
 }();
 
-console.log(IdGenerator.getId()); // 1
-console.log(IdGenerator.getId()); // 2
-console.log(IdGenerator.getId()); // 3
+console.log(idGenerator.getId());
+console.log(idGenerator.getId());
+console.log(idGenerator.getId());
 
-console.log(IdGenerator.number); // undefined
+console.log(idGenerator.nextId);
 					</code></pre>
 				</section>
+
+
+				<section>
+					<h3>Closure</h3>
+					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var idGenerator = function() {
+	
+	var nextId = 0;
+
+	return {
+		getId : function(){
+			nextId += 1;
+			return nextId;
+		}
+	}
+}();
+
+console.log(idGenerator.getId()); // 1
+console.log(idGenerator.getId()); // 2
+console.log(idGenerator.getId()); // 3
+
+console.log(idGenerator.nextId);  // undefined
+					</code></pre>
+				</section>				
 
 <!-- 					<section>
 					<h3>Closure</h3>
