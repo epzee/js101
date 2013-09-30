@@ -992,12 +992,17 @@ console.log(IdGenerator.getId()); // 2
 					<section>
 						<h3>Falsy Values</h3>
 						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var foo = "";
-if (!foo) {
-	console.log("foo is not an empty string");
-} else {
-	console.log("foo is an empty string");
+function check(foo) {
+	if (!foo) {
+		console.log("foo is a falsy value");
+	} else {
+		console.log("foo is a truthy value");
+	}
 }
+
+check(""); // "foo is a falsy value"
+check(); // "foo is a falsy value"
+check(0); // "foo is a falsy value"
 						</code></pre>
 					</section>
 
@@ -1053,16 +1058,71 @@ console.log(99   !== "99");  // true
 					</section>
 					<section>
 						<h3>jQuery - selector caching</h3>
+						<p>A jQuery selection basically is searching your DOM for specific elements based on what you specify</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+$('#YourSelection .aCSSClass').text('Change Text!');
+$('#YourSelection .aCSSClass').css('color','red');
+						</code></pre>
 					</section>
+
+					<section>
+						<h3>jQuery - selector caching</h3>
+						<p>Reduce DOM access</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var yourSelection = $('#YourSelection .aCSSClass');
+yourSelection.text('Change Text!');
+yourSelection.css('color','red');
+						</code></pre>
+					</section>
+
 					<section>
 						<h3>jQuery - selector chaining</h3>
 					</section>
+
 					<section>
 						<h3>jQuery - Sizzle</h3>
 					</section>
 					<section>
 						<h3>jQuery - no conflict</h3>
+						<p>Relinquish jQuery's control of the $ variable.</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+// Many JavaScript libraries use $ as a function or variable name.
+// If you need to use another JavaScript library alongside jQuery return
+// control of $ back to the other library with a call to $.noConflict()
+var j = jQuery.noConflict();
+ 
+//something with jQuery
+j("div p").hide();
+ 
+//something with another library's $()
+$("content").style.display = "none";						
+						</code></pre>
 					</section>	
+
+					<section>
+						<h3>jQuery - no conflict</h3>
+						<p>Load two versions of jQuery </p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+...
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.6.2.js"></script>
+...
+<script>
+	var $log = $("#log");
+	 
+	$log.append("2nd loaded jQuery version ($): " + $.fn.jquery + "<br>");
+	 
+	//Calling $.noConflict(true) remove all jQuery variables 
+	//from the global scope (including jQuery itself)
+	jq162 = jQuery.noConflict(true);
+	 
+	$log.append("<h3>After $.noConflict(true)</h3>");
+	$log.append("1st loaded jQuery version ($): " + $.fn.jquery + "<br>");
+	$log.append("2nd loaded jQuery version (jq162): " + jq162.fn.jquery + "<br>");
+</script>
+						</code></pre>
+					</section>	
+				</section>
 				</section>
 
 				<section>
