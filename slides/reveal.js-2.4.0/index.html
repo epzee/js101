@@ -17,8 +17,7 @@
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-		
-		<link href="./favicon.ico" rel="icon" type="image/ico" />
+		<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxklEQVQ4T2P8cNvvPwMFgHHUAIZBHgZO4Y/AEbxvpRzDf2BkO0dA+LuWyjKwsDCC2Xi9ADIAlEj2Aw2AGQYWAOoFGUqyAQXJQgx+bjwoyY5kF4BdtAJoO8QHxHsBpBg5HFZOk2YQFWbGbsB/oEpGRkawv/8D4f6V8kDNEDEQQA5cDC/AJEEaGYHQyZqLoTpXBB4D0DBkkBBlZlg2RRq7CzzjHjH8/MnAoCjHyjC3WxJsK8j5TsBoBLkhOYKfITqQn3AYEJPLAfMRepFzhAm/AAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />		
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -85,10 +84,10 @@
 						<h3>History</h3>
 						<p>JavaScript was formalized in the ECMAScript language standard in 1997.</p>
 					</section>
-					<section>
+					<section data-state="playVideo">
 						<h3>History</h3>
 						<p>Meanwhile in Argentina...</p>
-						<video width="640" height="480" controls>
+						<video data-autoplay class="strech" controls>
 							<source src="../assets/1996-03-05_Estratosfera2.mp4" type="video/mp4">
 						</video>
 					</section>					
@@ -103,8 +102,11 @@
 					<h3>Concepts</h3>
 				</section>
 
-				<!-- Objects -->
+				<!-- Objects -->			
 				<section>
+					<section>
+						<h3>Objects</h3>
+					</section>					
 					<section>
 						<h3>Objects</h3>
 						<p>An object is a container of properties, where a property has a name and a value.</p>
@@ -291,6 +293,9 @@ console.log(secondEmployee.name); // "noName"
 				<section>
 					<section>
 						<h3>Functions</h3>
+					</section>					
+					<section>
+						<h3>Functions</h3>
 						<p>Functions in JavaScript are objects.</p>
 						<p>Since functions are objects, they can be used like any other value. Functions can be stored in variables, objects, and arrays. Functions can be passed as arguments to functions, and functions can be returned from functions. Also, since functions are objects, functions can have methods.</p>
 					</section>
@@ -413,7 +418,7 @@ var counter = (function(){
       return ++i;
     }
   };
-}());
+})();
 						</code></pre>
 					</section>
 
@@ -513,16 +518,159 @@ logger(opts);
 					</section>
 
 					<section>
-						<h3>No classes</h3>
-						<!-- imagen de colegio -->
+						<h3>No classes!</h3>
+						<img src="../assets/suspension-de-clases.jpg">
+						<p class="fragment"><b>objects</b> inherit directly from other <b>objects</b></p>
+					</section>
+					<section>
+						<h3>Inheritance</h3>
+						<p>Each object has an internal link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype.					
+						</p>
+						<p class="fragment">null, by definition, has no prototype, and acts as the final link in this prototype chain.	</p>
+					</section>
+					<section>
+						<h3>Prototype chain - properties</h3>
+						<p>JavaScript objects are dynamic "bags" of properties (referred to as own properties) and each one has a link to a prototype object. Here is what happens when trying to access a property:</p>
 					</section>
 
 					<section>
 						<h3>Prototype chain - properties</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
+// Let's assume we have an object o with its prototype chain looking like:
+// {a:1, b:2} ---> {b:3, c:4} ---> null
+// 'a' and 'b' are o own properties.
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Prototype chain - properties</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
+// Let's assume we have an object o with its prototype chain looking like:
+// {a:1, b:2} ---> {b:3, c:4} ---> null
+// 'a' and 'b' are o own properties.
+
+console.log(o.a); // 1
+// Is there an 'a' own property on o? Yes and its value is 1
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Prototype chain - properties</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
+// Let's assume we have an object o with its prototype chain looking like:
+// {a:1, b:2} ---> {b:3, c:4} ---> null
+// 'a' and 'b' are o own properties.
+
+console.log(o.a); // 1
+// Is there an 'a' own property on o? Yes and its value is 1
+
+console.log(o.b); // 2
+// Is there a 'b' own property on o? Yes and its value is 2
+// The prototype also has a 'b' property, but it's not visited.
+// This is called "property shadowing"
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Prototype chain - properties</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
+// Let's assume we have an object o with its prototype chain looking like:
+// {a:1, b:2} ---> {b:3, c:4} ---> null
+// 'a' and 'b' are o own properties.
+
+console.log(o.a); // 1
+// Is there an 'a' own property on o? Yes and its value is 1
+
+console.log(o.b); // 2
+// Is there a 'b' own property on o? Yes and its value is 2
+// The prototype also has a 'b' property, but it's not visited.
+// This is called "property shadowing"
+
+console.log(o.c); // 4
+// Is there a 'c' own property on o? No, check its prototype
+// Is there a 'c' own property on o.[[Prototype]]? Yes, its value is 4
+							</code>
+						</pre>
+					</section>	
+					<section>
+						<h3>Prototype chain - properties</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
+// Let's assume we have an object o with its prototype chain looking like:
+// {a:1, b:2} ---> {b:3, c:4} ---> null
+// 'a' and 'b' are o own properties.
+
+console.log(o.a); // 1
+// Is there an 'a' own property on o? Yes and its value is 1
+
+console.log(o.b); // 2
+// Is there a 'b' own property on o? Yes and its value is 2
+// The prototype also has a 'b' property, but it's not visited.
+// This is called "property shadowing"
+
+console.log(o.c); // 4
+// Is there a 'c' own property on o? No, check its prototype
+// Is there a 'c' own property on o.[[Prototype]]? Yes, its value is 4
+
+console.log(o.d); // undefined
+// Is there a 'd' own property on o? No, check its prototype
+// Is there a 'd' own property on o.[[Prototype]]? No, check it prototype
+// o.[[Prototype]].[[Prototype]] is null, stop searching, no property found.
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h3>Prototype chain - methods</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">						
+var o = {
+  a: 2,
+  m: function(b){
+    return this.a + 1;
+  }
+};
+
+console.log(o.m()); // ??
+
+
+var p = Object.create(o);
+
+
+p.a = 12;
+console.log(p.m()); // ??
+
+	
+
+.						</code></pre>					
+					</section>
+
+					<section>
+						<h3>Prototype chain - methods</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">						
+var o = {
+  a: 2,
+  m: function(b){
+    return this.a + 1;
+  }
+};
+
+console.log(o.m()); // 3
+// When calling o.m in this case, 'this' refers to o
+
+var p = Object.create(o);
+// p is an object that inherits from o
+
+p.a = 12; // creates an own property 'a' on p
+console.log(p.m()); // 13
+
+// when p.m is called, 'this' refers to p.
+// So when p inherits the function m of o, 
+// 'this.a' means p.a, the own property 'a' of p	
+						</code></pre>					
 					</section>
 					
 					<section>

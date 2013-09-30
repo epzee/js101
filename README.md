@@ -26,7 +26,7 @@ http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-
 
 
 <!---
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain#Bad_practice.3A_Extension_of_native_prototypes
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
 https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions_and_function_scope
 http://designpepper.com/blog/drips/variable-and-function-hoisting
 http://www.impressivewebs.com/why-use-triple-equals-javascipt/
