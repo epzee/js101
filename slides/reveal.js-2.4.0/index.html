@@ -1030,6 +1030,9 @@ hasShape: function () {
 
 				<section>
 					<section>
+						<h3>Comparison operators</h3>
+					</section>
+					<section>
 						<h3>==</h3>
 						<p>If you try comparing a string with a number, the browser will try to convert the string into a number before doing the comparison:</p>
 					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
@@ -1051,13 +1054,19 @@ console.log(99   !== "99");  // true
 
 				<section>
 					<section>
+						<h3>jQuery</h3>
+					</section>
+
+					<section>
 						<h3>jQuery - use cdn</h3>
-					</section>					
+					</section>
+
 					<section>
 						<h3>jQuery - append</h3>
 						<p>Insert content, specified by the parameter, to the end of each element in the set of matched elements.</p>
 						<a href="../../code/jQuery/jQueryAppend.html">Link to example</a>
 					</section>
+
 					<section>
 						<h3>jQuery - selector caching</h3>
 						<p>A jQuery selection basically is searching your DOM for specific elements based on what you specify</p>
@@ -1113,6 +1122,7 @@ $(function() {
 					<section>
 						<h3>jQuery - Sizzle</h3>
 					</section>
+
 					<section>
 						<h3>jQuery - no conflict</h3>
 						<p>Relinquish jQuery's control of the $ variable.</p>
@@ -1207,28 +1217,48 @@ $("content").style.display = "none";
 				</section>
 
 				<section>
-					<h3>Non Blocking Script Loading Pattern</h3>
-				</section>
-
-				<section>
 					<section>
-						<h3>Repaint & reflow</h3>
+						<h3>Reflow</h3>
+						<p>Reflow is the name of the web browser process for re-calculating the positions and geometries of elements in the document, for the purpose of re-rendering part or all of the document</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+for(x = 0; x &lt; 1000; x++) {
+    var element = $("<div>" + x + "</div>");
+    $('body').append(element);
+}
+						</code></pre>
 					</section>
+
 					<section>
-						<h3>Repaint & reflow</h3>
+						<h3>Reflow</h3>
+						<p>Modify the DOM as few times as possible.</p>
+						<a href="../../code/jQuery/jQueryAppend.html">Link to example</a>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var elements = $();
+for(x = 0; x &lt; 1000; x++) {
+    elements = elements.add("<div>" + x + "</div>");
+}
+$('body').append(elements);					
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Repaint</h3>
+						<p>A repaint occurs when changes are made to an elements skin that changes visibility, but do not affect its layout</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var bstyle = document.body.style; // cache
+ 
+bstyle.padding = "20px"; // reflow, repaint
+bstyle.border = "10px solid red"; // another reflow and a repaint
+ 
+bstyle.color = "blue"; // repaint only, no dimensions changed
+bstyle.backgroundColor = "#fad"; // repaint
+ 
+bstyle.fontSize = "2em"; // reflow, repaint
+ 
+//new DOM element - reflow, repaint
+document.body.appendChild(document.createTextNode('dude!'));
+						</code></pre>						
 					</section>					
-				</section>
-
-				<section>
-					<h3>for in</h3>
-				</section>
-
-				<section>
-					<h3>Multiple var declaration (lint hint)</h3>
-				</section>
-
-				<section>
-					<h3>gzip</h3>
 				</section>
 
 				<section>
