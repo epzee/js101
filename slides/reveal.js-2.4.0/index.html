@@ -1055,6 +1055,8 @@ console.log(99   !== "99");  // true
 					</section>					
 					<section>
 						<h3>jQuery - append</h3>
+						<p>Insert content, specified by the parameter, to the end of each element in the set of matched elements.</p>
+						<a href="../../code/jQuery/jQueryAppend.html">Link to example</a>
 					</section>
 					<section>
 						<h3>jQuery - selector caching</h3>
@@ -1072,6 +1074,35 @@ $('#YourSelection .aCSSClass').css('color','red');
 var yourSelection = $('#YourSelection .aCSSClass');
 yourSelection.text('Change Text!');
 yourSelection.css('color','red');
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>jQuery - selector caching</h3>
+						<p>Reduce DOM access</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var container = $('<div id="container"></div>');
+container.appendTo(document.body);
+	
+$(function() {
+	var descriptionOn  = "Caching selector ON ",
+	    descriptionOff = "Caching selector OFF";
+
+	console.time(descriptionOff);
+	for(var i = 0; i &lt; 10000; i++) {
+		var s = $("container");
+	}
+
+	console.timeEnd(descriptionOff);
+	
+	console.time(descriptionOn);
+	var myDiv = $("container");
+	for(var i = 0; i &lt; 10000; i++) {
+		var s = myDiv;
+	}
+	console.timeEnd(descriptionOn);
+});
+		
 						</code></pre>
 					</section>
 
