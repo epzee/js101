@@ -171,6 +171,22 @@ var firstEmployee = new Employee("Pepe", 35,
 					</section>
 
 					<section>
+						<h3>Creation - Using constructor function</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function Employee(name, age, address, phone){
+	//Create this = {}
+	//Some behavior...
+	this.name = name;
+	this.age = age;
+	this.address = address;
+	this.phone = phone;
+	//The resulting this is returned.
+}
+						</code></pre>
+						<p class="fragment">Note: If the function returns an object, <i><b>this</b></i> is ignored</p>
+					</section>
+
+					<section>
 						<h3>Creation - Using Object.create</h3>
 						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
 var myMammal = {
@@ -187,6 +203,8 @@ var myCat = Object.create(myMammal);
 
 myCat.name = 'Henrietta';
 myCat.saying = 'meow';
+myCat.get_name(); // "Henrietta"
+
 myCat.get_name = function ( ) {
 	return this.says() + ' ' + this.name + ' ' + this.says();
 };
@@ -218,7 +236,7 @@ console.log(employee[""]); // Object {street: "Av. 1", number: 1000}
 
 					<section>
 						<h3>Properties</h3>
-						<p>. notation <i>(if it is a legal JavaScript name and not a reserved word)</i></p>
+						<p>. notation</p>
 						<!-- object.property -->
 						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
 var employee = {
@@ -232,7 +250,7 @@ var employee = {
 };
 employee.name = "Juan";
 console.log(employee.name); // "Juan"
-//employee[""] ??
+//employee[""] using . notation??
 						</code></pre>
 					</section>
 
@@ -382,21 +400,28 @@ $("p").on("click", showAlert);
 
 					<section>
 						<h3>Anonymous functions</h3>
-						<p>Use the function operator instead of the function declaration.</p>
+						<p>For functions created using function expression, the name is optional.</p>
 						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var form = document.querySelector('form');
-form.onsubmit = function(submitEvent) {
-  var name = document.querySelector('input').value;
-  request({
-    uri: "http://example.com/upload",
-    body: name,
-    method: "POST"
-  }, function(err, response, body) {
-    var statusMessage = document.querySelector('.status');
-    if (err) return statusMessage.value = err;
-    statusMessage.value = body;
-  });
+var flyToTheMoon = function() {
+   alert("Zoom! Zoom! Zoom");
 }
+flyToTheMoon();
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Anonymous functions</h3>
+						<p>Useful for recursion and debugging</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var thingsToDoToday = function flyToTheMoon(onTheMoon) {
+	if (!onTheMoon){
+		flyToTheMoon(true);
+	} else {
+		alert("One small step for a man..");
+	}
+}
+
+thingsToDoToday();
 						</code></pre>
 					</section>
 
@@ -972,24 +997,6 @@ console.log(idGenerator.nextId);  // undefined
 					</code></pre>
 				</section>				
 
-<!-- 					<section>
-					<h3>Closure</h3>
-					<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
-var IdGenerator = {
-	
-	number : 0,
-
-	getId : function(){
-		this.number += 1;
-		return this.number;
-	}
-};
-console.log(IdGenerator.getId()); // 1
-console.log(IdGenerator.number); // 1
-console.log(IdGenerator.getId()); // 2
-					</code></pre>
-				</section> -->
-
 				</section>
 
 				<section>
@@ -1033,7 +1040,7 @@ check(0); // "foo is a falsy value"
 					</section>
 
 					<section>
-						<h3>Falsy Values - !! !!!</h3>
+						<h3>Falsy Values - !!</h3>
 						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
 hasShape: function () {
 	var instance = this,
@@ -1166,7 +1173,7 @@ $('#myElement').text('Change Text!').css('color','red');
 // Many JavaScript libraries use $ as a function or variable name.
 // If you need to use another JavaScript library alongside jQuery return
 // control of $ back to the other library with a call to $.noConflict()
-var j = jQuery.noConflict();
+var j = $.noConflict();
  
 //something with jQuery
 j("div p").hide();
