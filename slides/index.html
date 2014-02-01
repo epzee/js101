@@ -6,14 +6,6 @@
 
 		<title>JavaScript 101</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
-
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
@@ -21,15 +13,6 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
-
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
 
 		<style type="text/css">
 			.reveal pre code {
@@ -78,19 +61,19 @@
 					<section>
 						<h3>History</h3>
 						<p>JavaScript was created in 10 days in May 1995 by <b>Brendan Eich</b> while working at Netscape</p>
-						<img src="../assets/this.big.Brendan.Eich.jpg" class="fragment">
+						<img src="assets/this.big.Brendan.Eich.jpg" class="fragment">
 					</section>
 					<section>
 						<h3>History</h3>
 						<p>JavaScript was formalized in the ECMAScript language standard in 1997.</p>
 					</section>
-					<section data-state="playVideo">
+					<!--<section data-state="playVideo">
 						<h3>History</h3>
 						<p>Meanwhile in Argentina...</p>
 						<video data-autoplay class="strech" controls>
-							<source src="../assets/1996-03-05_Estratosfera2.mp4" type="video/mp4">
+							<source src="assets/1996-03-05_Estratosfera2.mp4" type="video/mp4">
 						</video>
-					</section>					
+					</section>		-->			
 					<section>
 						<h3>History</h3>
 						<p>The current edition of the ECMAScript standard is 5.1, released in June 2011</p>
@@ -544,7 +527,7 @@ logger(opts);
 
 					<section>
 						<h3>No classes!</h3>
-						<img src="../assets/suspension-de-clases.jpg">
+						<img src="assets/suspension-de-clases.jpg">
 						<p class="fragment"><b>objects</b> inherit directly from other <b>objects</b></p>
 					</section>
 					<section>
@@ -1330,8 +1313,11 @@ document.body.appendChild(document.createTextNode('dude!'));
 				</section>
 
 				<section>
-					<h1>Gracias!!!</h1>
-					<h3>Preguntas?</h3>
+					<h3>Questions?</h3>
+				</section>
+
+				<section>
+					<h1>Thank you!!!</h1>
 					<a href="https://github.com/epzee/js101">github.com/epzee/js101</a>
 				</section>
 
@@ -1344,8 +1330,6 @@ document.body.appendChild(document.createTextNode('dude!'));
 
 		<script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,

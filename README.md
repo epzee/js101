@@ -1,11 +1,35 @@
-js101
-=====
-
 Javascript 101
+==============
 
+* Brief history
+* Objects
+* Functions
+* Inheritance
+* Scope
+* Hoisting
+* Closure
+* Best practices
+  * Falsy values (!!)
+  * Comparison operators (== vs ===)
+  * Non-Blocking Script Loading Pattern
+  * Bundling & minification
+  * jslint / jshint
+  * Underscore.js
+  * jQuery
+    * CDN
+    * Append
+    * Selector caching
+    * Chaining
+    * Sizzle
+    * No conflict
+  * Chrome DevTools
+    * Shortcuts
+    * Debugger / console api
+    * Network tab
+    * Profile tab / timing functions
 
 <!---
-
+ 
 #console.table([{a:1, b:2, c:3}, {a:"foo", b:false, c:undefined}]);
 # +new Date()
 
