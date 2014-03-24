@@ -987,7 +987,7 @@ console.log(idGenerator.nextId);  // undefined
 				</section>
 
 				<section>
-					
+
 					<section>
 						<h3>Falsy Values</h3>
 						<p>Everything in JavaScript has an inherent Boolean value, generally known as either truthy or falsy</p>
@@ -1042,6 +1042,55 @@ hasShape: function () {
 },						
 						</code></pre>
 					</section>					
+				</section>
+
+				<section>
+					<section>
+						<h3>Logical Operators</h3>
+						<p>The <b>&&</b> and <b>||</b> operators actually return the value of one of the specified operands, so if these operators are used with non-Boolean values, they may return a non-Boolean value</p>
+					</section>
+
+					<section>
+						<h3>expr1 && expr2</h3>
+						<p>Returns expr1 if it can be converted to false; otherwise, returns expr2.</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var a1 =  true && true;     //t && t returns true
+var a2 =  true && false;    //t && f returns false
+var a3 = false && true;     //f && t returns false
+var a4 = false && (3 == 4); //f && f returns false
+var a5 = "Cat" && "Dog";    //t && t returns "Dog"
+var a6 = false && "Cat";    //f && t returns false
+var a7 = "Cat" && false;    //t && f returns false
+var a8 = "" && "Cat";       //f && t returns ""
+var a9 = true && "Cat";     //t && t returns "Cat"
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>expr1 || expr2</h3>
+						<p>Returns expr1 if it can be converted to true; otherwise, returns expr2.</p>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+var o1 =  true || true;     // t || t returns true
+var o2 = false || true;     // f || t returns true
+var o3 =  true || false;    // t || f returns true
+var o4 = false || (3 == 4); // f || f returns false
+var o5 = "Cat" || "Dog";    // t || t returns "Cat"
+var o6 = false || "Cat";    // f || t returns "Cat"
+var o7 = "Cat" || false;    // t || f returns "Cat"
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Example</h3>
+						<pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+function getElement () {
+	return (this.useCache && this.$elementSaved) ||
+	  (this.$elementSaved = $('#' + this.getElementId()));
+}
+						</code></pre>
+					</section>
+
+
 				</section>
 
 				<section>
